@@ -18,6 +18,8 @@ public class EmpController {
     @Autowired
     EmpService empService;
 
+    log.info("this message is code from github");
+
     /**
      * 分页查询员工信息
      */
