@@ -24,7 +24,6 @@ public class EmpController {
      */
     @GetMapping
     public Result findPage(EnquiryParam  enquiryParam){
-        log.info("this message is code from idea");
         log.info("分页查询员工信息: {}",enquiryParam);
 
         PageResult<Emp> queryResult = empService.findPage(enquiryParam);
