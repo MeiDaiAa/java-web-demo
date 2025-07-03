@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.ReportMapper">
+
+    <!--查询每个部门对应的人数-->
+    <select id="empJobData" resultType="java.util.Map">
+        select (case
+                    when job = 1 then '班主任'
+                    when job = 2 then '讲师'
+                    when job = 3 then '学生主管'
+                    when job = 4 then '教研主管'
+                    when job = 5 then '咨询师'
+                    else '其他' end) pos,
+               count(*) total
+        from emp
+        group by job
+        order by total
+    </select>
+    <!--查询员工性别-->
+    <select id="empDenderData" resultType="java.util.Map">
+        select if(gender = 1, '男性员工', '女性员工') name,
+               count(*) value
+        from emp
+        group by gender
+
+    </select>
+</mapper>
