@@ -16,4 +16,6 @@ public interface EmpService {
     Emp findById(Integer id);
 
     void alter(Emp emp);
+
+    List<Emp> list();
 }

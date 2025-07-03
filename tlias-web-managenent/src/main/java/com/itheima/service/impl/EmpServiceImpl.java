@@ -114,4 +114,12 @@ public class EmpServiceImpl implements EmpService {
             empMapper.addEmpExpr(empExprList);
         }
     }
+
+    /**
+     * 查询所有员工
+     */
+    @Override
+    public List<Emp> list() {
+        return empMapper.list();
+    }
 }

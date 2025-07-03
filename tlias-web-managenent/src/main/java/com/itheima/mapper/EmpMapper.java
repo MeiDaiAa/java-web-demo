@@ -62,4 +62,7 @@ public interface EmpMapper {
     Emp findById(Integer id);
 
     void alter(Emp emp);
+
+    @Select("select * from emp")
+    List<Emp> list();
 }

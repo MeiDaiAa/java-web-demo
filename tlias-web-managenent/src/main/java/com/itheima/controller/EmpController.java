@@ -31,6 +31,16 @@ public class EmpController {
         return Result.success(queryResult);
     }
 
+    /**
+     * 查询所有员工
+     */
+    @GetMapping("/list")
+    public Result list(){
+        log.info("查询所有员工");
+        List<Emp> list = empService.list();
+        return Result.success(list);
+    }
+
 
     /**
      * 新增员工
