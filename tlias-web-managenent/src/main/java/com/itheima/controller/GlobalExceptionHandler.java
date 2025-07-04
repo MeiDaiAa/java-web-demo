@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.exception.BusinessException;
 import com.itheima.pojo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DuplicateKeyException;
@@ -32,5 +33,11 @@ public class GlobalExceptionHandler {
         }
 
         return Result.error("DuplicateKeyException");
+    }
+
+    @ExceptionHandler
+    public Result BusinessExceptionHandler(BusinessException e){
+        log.error("部门管理出现异常：", e);
+        return Result.error(e.getMessage());
     }
 }

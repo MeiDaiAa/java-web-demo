@@ -122,4 +122,12 @@ public class EmpServiceImpl implements EmpService {
     public List<Emp> list() {
         return empMapper.list();
     }
+
+    /**
+     * 通过部门id查找员工数量
+     */
+    @Override
+    public int findCountByDeptId(Integer id) {
+        return empMapper.findCountByDempId(id);
+    }
 }

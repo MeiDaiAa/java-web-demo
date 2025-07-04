@@ -65,4 +65,10 @@ public interface EmpMapper {
 
     @Select("select * from emp")
     List<Emp> list();
+
+    /**
+     * 通过部门id查找员工人数
+     */
+    @Select("select count(*) from emp where dept_id = #{dept_id}")
+    int findCountByDempId(Integer dept_id);
 }

@@ -18,4 +18,6 @@ public interface EmpService {
     void alter(Emp emp);
 
     List<Emp> list();
+
+    int findCountByDeptId(Integer id);
 }

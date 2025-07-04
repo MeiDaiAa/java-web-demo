@@ -37,8 +37,7 @@ public class DeptController {
     public Result delete(Integer id) {
 //        System.out.println("删除部门数据: " + id);
         log.info("删除部门数据: {}", id);
-        int ret = deptService.deleteById(id);
-        if(ret != 0) return Result.error("对不起，当前部门下有员工，不能直接删除！");
+        deptService.deleteById(id);
         return Result.success();
     }
     /**

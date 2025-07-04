@@ -1,16 +1,14 @@
 package com.itheima.service.impl;
 
+import com.itheima.exception.BusinessException;
 import com.itheima.mapper.DeptMapper;
 import com.itheima.pojo.Dept;
-import com.itheima.pojo.Emp;
 import com.itheima.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class DeptServiceImpl implements com.itheima.service.DeptService{
@@ -30,16 +28,11 @@ public class DeptServiceImpl implements com.itheima.service.DeptService{
     @Autowired
     private EmpService empService;
     @Override
-    public int deleteById(Integer id) {
-        List<Emp> emps = empService.list();
-
-        for(Emp emp : emps){
-            //注意比较不能使用 == 来比较，因为 == 比较的是地址，在-128 ~ 127 的时候是缓存的，虽然相等但是如果超出范围就不会相等
-            if(Objects.equals(emp.getDeptId(), id)) return -1;
-        }
+    public void deleteById(Integer id) {
+        int count = empService.findCountByDeptId(id);
+        if(count > 0) throw new BusinessException("对不起，当前部门下有员工，不能直接删除！");
 
         deptMapper.deleteById(id);
-        return 0;
     }
 
     @Override
