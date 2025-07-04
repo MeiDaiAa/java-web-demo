@@ -16,4 +16,8 @@ public class EnquiryParam {
     private LocalDate end;//范围匹配的结束时间(入职日期)
     private Integer page = 1;//分页查询的页码，如果未指定，默认为1
     private Integer pageSize = 10;//分页查询的每页记录数，如果未指定，默认为10
+
+    //学生信息
+    private Integer degree;
+    private Integer clazzId;
 }
