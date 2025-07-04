@@ -50,4 +50,23 @@ public class ReportController {
 
         return Result.success(empGenderList);
     }
+
+    /**
+     * 班级人数统计
+     */
+    @GetMapping("/studentCountData")
+    public Result studentCountData(){
+        log.info("班级人数统计");
+        return Result.success(reportService.studentCountData());
+    }
+
+    /**
+     * 学员学历信息统计
+     */
+    @GetMapping("/studentDegreeData")
+    public Result studentDegreeData(){
+        log.info("学员学历信息统计");
+
+        return Result.success(reportService.studentDegreeData());
+    }
 }

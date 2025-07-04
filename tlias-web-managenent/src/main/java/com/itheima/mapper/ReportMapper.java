@@ -17,4 +17,10 @@ public interface ReportMapper {
 
     @MapKey("name")
     List<Map<String, Object>> empDenderData();
+
+    @MapKey("clazz")
+    List<Map<String, Object>> studentCountData();
+
+    @MapKey("name")
+    List<Map<String, Object>> studentDegreeData();
 }
