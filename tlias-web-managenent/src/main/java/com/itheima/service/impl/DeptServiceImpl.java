@@ -1,6 +1,6 @@
 package com.itheima.service.impl;
 
-import com.itheima.exception.BusinessException;
+import com.itheima.exception.DeptException;
 import com.itheima.mapper.DeptMapper;
 import com.itheima.pojo.Dept;
 import com.itheima.service.EmpService;
@@ -30,7 +30,7 @@ public class DeptServiceImpl implements com.itheima.service.DeptService{
     @Override
     public void deleteById(Integer id) {
         int count = empService.findCountByDeptId(id);
-        if(count > 0) throw new BusinessException("对不起，当前部门下有员工，不能直接删除！");
+        if(count > 0) throw new DeptException("对不起，当前部门下有员工，不能直接删除！");
 
         deptMapper.deleteById(id);
     }

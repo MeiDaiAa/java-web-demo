@@ -71,4 +71,10 @@ public interface EmpMapper {
      */
     @Select("select count(*) from emp where dept_id = #{dept_id}")
     int findCountByDempId(Integer dept_id);
+
+    /**
+     * 通过用户名和密码查询员工
+     */
+    @Select("select * from emp where username = #{username} and password = #{password}")
+    Emp findByUsernameAndPassword(String username, String password);
 }
