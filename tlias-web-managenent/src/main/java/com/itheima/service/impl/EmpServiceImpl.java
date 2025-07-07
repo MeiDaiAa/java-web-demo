@@ -7,6 +7,7 @@ import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.*;
 import com.itheima.service.EmpLogService;
 import com.itheima.service.EmpService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Slf4j
 @Service
 public class EmpServiceImpl implements EmpService {
 
@@ -64,7 +66,9 @@ public class EmpServiceImpl implements EmpService {
                 });
             }
             //添加到员工经历表
-            empMapper.addEmpExpr(emp.getExprList());
+            log.info("添加员工工作经历: " + emp.getExprList());
+            if(emp.getExprList() != null && !emp.getExprList().isEmpty())
+                empMapper.addEmpExpr(emp.getExprList());
         } finally {
             //记录添加日志
             empLogService.insertLog(new EmpLog(null, LocalDateTime.now(), "添加员工: " + emp));

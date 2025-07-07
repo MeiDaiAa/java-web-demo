@@ -1,6 +1,8 @@
 package com.itheima.interceptor;
 
+import com.itheima.utils.CurrentHolder;
 import com.itheima.utils.JwtUtils;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +31,12 @@ public class JwtInterceptor implements HandlerInterceptor {
 
         //验证 token
         try{
-            JwtUtils.parseJwt(token);
+            Claims claims = JwtUtils.parseJwt(token);
+            //获取到员工id
+            Integer employeeId = (Integer) claims.get("id");
+            log.info("当前登录的员工id为：{}", employeeId);
+            //将员工id保存到ThreadLocal中
+            CurrentHolder.setCurrentId(employeeId);
         }catch (Exception e){;
             log.error("token非法");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -43,6 +50,9 @@ public class JwtInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        //释放资源
+        CurrentHolder.remove();
+        log.info("释放资源");
         log.info("postHandle...");
     }
 

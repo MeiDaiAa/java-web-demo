@@ -1,6 +1,7 @@
 package com.itheima.controller;
 
 
+import com.itheima.anno.Log;
 import com.itheima.pojo.Clazz;
 import com.itheima.pojo.EnquiryParam;
 import com.itheima.pojo.PageResult;
@@ -32,6 +33,7 @@ public class ClazzController {
     /**
      * 删除班级
      */
+    @Log
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id){
         log.info("删除班级: " + id);
@@ -43,6 +45,7 @@ public class ClazzController {
     /**
      * 添加班级
      */
+    @Log
     @PostMapping
     public Result add(@RequestBody Clazz clazz){
         log.info("添加班级: " + clazz);
@@ -65,6 +68,7 @@ public class ClazzController {
     /**
      * 修改班级
      */
+    @Log
     @PutMapping
     public Result alter(@RequestBody Clazz clazz){
         log.info("修改班级: " + clazz);
