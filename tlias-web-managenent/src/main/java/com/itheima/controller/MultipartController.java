@@ -1,18 +1,15 @@
 package com.itheima.controller;
 
 
+import com.aliyun.oss.AliyunOSSOperator;
 import com.itheima.pojo.Result;
-import com.itheima.utils.AliyunOSSOperator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
-import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -41,7 +38,8 @@ public class MultipartController {
     }*/
     //将文件上传到阿里云
     @Autowired
-    AliyunOSSOperator aliyunOSSOperator;
+    private AliyunOSSOperator aliyunOSSOperator;
+
     @PostMapping("/upload")
     public Result upload(MultipartFile file){
         log.info("上传文件: {}", file);

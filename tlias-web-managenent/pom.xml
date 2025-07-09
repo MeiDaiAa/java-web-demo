@@ -104,6 +104,13 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
+        <!--添加自己创建的start包-->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>com-aliyun-oss-spring-boot-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>
